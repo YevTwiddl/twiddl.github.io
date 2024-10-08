@@ -37,12 +37,6 @@
             transform-origin: center; /* Keep rotation centered */
             z-index: -1; /* Put the square behind content */
         }
-        .content {
-            padding: 20px;
-            margin-top: 200px; /* Extra space for scroll */
-            height: 2000px; /* Content height to enable scroll */
-            background-color: #fafafa;
-        }
     </style>
 </head>
 <body>
@@ -52,11 +46,6 @@
 </header>
 
 <div class="square" id="square"></div>
-
-<div class="content">
-    <p>Scroll down to see the square rotate and follow the window.</p>
-    <!-- Additional content goes here -->
-</div>
 
 <script>
     window.addEventListener('scroll', function() {
