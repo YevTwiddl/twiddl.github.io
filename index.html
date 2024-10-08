@@ -34,11 +34,11 @@
         }
         h1 {
             font-family: 'Squada One', sans-serif; /* Use Squada One font */
-            font-size: 3rem; /* Adjust the font size as needed */
+            font-size: 2.5rem; /* Adjust the font size as needed */
             color: #333; /* Set the text color */
             text-align: center; /* Center the text */
             margin: 20px 0; /* Add some spacing around the text */
-            letter-spacing: 1px; /* Add a little letter spacing for style */
+            letter-spacing: 3px; /* Add a little letter spacing for style */
             text-transform: lowercase; /* Make the text uppercase for impact */
         }
 
@@ -97,7 +97,7 @@
 
         .wisp-section {
             position: relative;
-            height: 800px;
+            height: 1000px;
             background-color: #fff;
             text-align: center;
             padding-top: 50px;
@@ -149,13 +149,57 @@
         .move-and-scale {
             animation: moveToCenterAndScale 2s forwards ease-in-out;
         }
+
+        /* Email input container styles */
+        .email-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            z-index: 999;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.5s ease; /* Smooth transition for opacity */
+        }
+
+        .email-container.show {
+            opacity: 1; /* Make it visible when the class is added */
+        }
+
+
+        .email-container input[type="email"] {
+            padding: 10px;
+            width: 100%;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .email-container button {
+            padding: 10px;
+            background-color: #00AFFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .email-container button:hover {
+            background-color: #007bbd;
+        }
     </style>
 </head>
 <body>
 
 <header>
     <img src="/pictures/twiddl_plank.png" alt="Twiddl Logo">
-    <h1> Your data just a twist away </h1>
+    <h1> twist your data </h1>
 </header>
 
 <div class="wrapper">
@@ -170,7 +214,7 @@
     <!-- Wisp Section -->
     <div class="wisp-section" id="wisp">
         <img src="/pictures/wisp_plank.png" alt="Wisp Logo">
-        <h1> One click between you and data </h1>
+        <h1> one click for big insights </h1>
         <div class="content">
             <h4>Wisp info placeholder</h4>
             <p>This is a placeholder for a Wisp content section.</p>
@@ -186,6 +230,13 @@
     </div>
 </div>
 
+<!-- Email Input Section -->
+<div class="email-container" id="email-container">
+    <h3>Join the Waitlist</h3>
+    <input type="email" placeholder="Enter your email">
+    <button>Submit</button>
+</div>
+
 <!-- Footer Section -->
 <footer>
     <p>Contact us at: <a href="mailto:contact@twiddl.dev">contact@twiddl.dev</a></p>
@@ -193,7 +244,6 @@
 </footer>
 
 <script>
-
     let hasScaled = false;
     
     window.addEventListener('scroll', function() {
@@ -218,13 +268,12 @@
         const windowHeight = window.innerHeight;
 
         let blueSquare = document.getElementById('blue-square');
+        let emailContainer = document.getElementById('email-container');
 
         // Detect when the bottom of the Wisp section is reached
         const wispSection = document.getElementById('wisp');
         const wispSectionBottom = wispSection.getBoundingClientRect().bottom;
         const wispSectionTop = wispSection.getBoundingClientRect().top;
-
-
 
         // Change to red when entering Wisp, return to blue when leaving
         if (wispSectionTop + 300 < windowHeight && wispSectionBottom > 0) {
@@ -237,6 +286,9 @@
         if (bigImageSectionBottom < windowHeight && !hasScaled) {
             blueSquare.classList.add('move-and-scale');
             blueSquare.classList.remove('return-to-original');
+            setTimeout(function() {
+                emailContainer.classList.add('show'); // Smoothly show the email input
+            }, 1000); // 1000ms = 1 second
             hasScaled = true; // Mark that the blue square has scaled
         }
 
@@ -244,10 +296,9 @@
         if (bigImageSectionBottom > windowHeight && hasScaled) {
             blueSquare.classList.remove('move-and-scale');
             blueSquare.classList.add('return-to-original');
+            emailContainer.classList.remove('show'); // Smoothly hide the email input
             hasScaled = false; // Reset the scaling state
         }
     });
 </script>
 
-</body>
-</html>
