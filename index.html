@@ -24,7 +24,9 @@
             margin: 0;
             padding-top: 50px;
             background-color: #fff;
+            overflow-x: hidden;
             z-index: 2;
+            
         }
 
         header img {
@@ -56,34 +58,34 @@
         .blue_square {
             position: fixed;
             top: 5%;
-            left: -20%;
-            width: 100vh;
-            height: 100vh;
+            left: -30%;
+            width: 50%; /* 50% of viewport width */
+            aspect-ratio: 1 / 1;
             background-color: #00AFFF;
             transform: rotate(25deg);
-            border-radius: 75px;
+            border-radius: 10%;
         }
 
         .yellow_square {
             position: absolute;
             top: 15%;
             left: 90%;
-            width: 25vh;
-            height: 25vh;
+            width: 15%;
+            aspect-ratio: 1 / 1;
             background-color: yellow;
             transform: rotate(75deg);
-            border-radius: 25px;
+            border-radius: 10%;
         }
 
         .green_square {
             position: absolute;
-            bottom: -10%;
+            bottom: -5%;
             right: -5%;
-            width: 50vh;
-            height: 50vh;
+            width: 25%;
+            aspect-ratio: 1 / 1;
             background-color: green;
             transform: rotate(-45deg);
-            border-radius: 35px;
+            border-radius: 10%;
         }
 
         .content {
@@ -102,6 +104,7 @@
             text-align: center;
             padding-top: 50px;
             z-index: 1;
+            overflow-x: hidden;
         }
 
         .big-image-section {
@@ -162,11 +165,12 @@
             text-align: center;
             z-index: 999;
             opacity: 0; /* Initially hidden */
-            transition: opacity 0.5s ease; /* Smooth transition for opacity */
+            transition: opacity 0.2s ease; /* Smooth transition for opacity */
         }
 
         .email-container.show {
             opacity: 1; /* Make it visible when the class is added */
+            transition: opacity 0.5s ease 1s;
         }
 
 
@@ -198,13 +202,13 @@
 <body>
 
 <header>
-    <img src="/pictures/twiddl_plank.png" alt="Twiddl Logo">
+    <img src="/home/yevhen/Twiddle/pictures/twiddl_plank.png" alt="Twiddl Logo">
     <h1> twist your data </h1>
+    <div class="square yellow_square"></div>
 </header>
 
 <div class="wrapper">
     <div class="square blue_square" id="blue-square"></div>
-    <div class="square yellow_square"></div>
 
     <div class="content">
         <h4>Twiddl info placeholder</h4>
@@ -213,7 +217,7 @@
 
     <!-- Wisp Section -->
     <div class="wisp-section" id="wisp">
-        <img src="/pictures/wisp_plank.png" alt="Wisp Logo">
+        <img src="/home/yevhen/Twiddle/pictures/wisp_plank.png" alt="Wisp Logo">
         <h1> one click for big insights </h1>
         <div class="content">
             <h4>Wisp info placeholder</h4>
@@ -244,7 +248,7 @@
 </footer>
 
 <script>
-    let hasScaled = false;
+    //let hasScaled = false;
     
     window.addEventListener('scroll', function() {
         let squares = document.querySelectorAll('.square');
@@ -283,21 +287,21 @@
         }
 
         // When the bottom of the Big Image section is reached, move and scale the blue square
-        if (bigImageSectionBottom < windowHeight && !hasScaled) {
+        if (bigImageSectionBottom < windowHeight) {
             blueSquare.classList.add('move-and-scale');
             blueSquare.classList.remove('return-to-original');
-            setTimeout(function() {
-                emailContainer.classList.add('show'); // Smoothly show the email input
-            }, 1000); // 1000ms = 1 second
-            hasScaled = true; // Mark that the blue square has scaled
+
+            emailContainer.classList.add('show'); // Smoothly show the email input
+// 1000ms = 1 second
+            //hasScaled = true; // Mark that the blue square has scaled
         }
 
         // When scrolling back up and before the Big Image section, return blue square to original position
-        if (bigImageSectionBottom > windowHeight && hasScaled) {
+        if (bigImageSectionBottom > windowHeight) {
             blueSquare.classList.remove('move-and-scale');
             blueSquare.classList.add('return-to-original');
             emailContainer.classList.remove('show'); // Smoothly hide the email input
-            hasScaled = false; // Reset the scaling state
+            //hasScaled = false; // Reset the scaling state
         }
     });
 </script>
