@@ -4,54 +4,248 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Squada+One&display=swap" rel="stylesheet">
     <title>Twiddl</title>
     <style>
+        
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: lightgray;
+            overflow-x: hidden;
         }
+
         header {
-            position: relative;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            background-color: #f4f4f4;
+            margin: 0;
+            padding-top: 50px;
+            background-color: #fff;
+            z-index: 2;
+        }
+
+        header img {
+            width: 300px;
+            height: auto;
+            padding-bottom: 30px;
         }
         h1 {
-            margin: 0;
-            font-size: 3rem;
-            color: #333;
-            text-align: center;
+            font-family: 'Squada One', sans-serif; /* Use Squada One font */
+            font-size: 3rem; /* Adjust the font size as needed */
+            color: #333; /* Set the text color */
+            text-align: center; /* Center the text */
+            margin: 20px 0; /* Add some spacing around the text */
+            letter-spacing: 1px; /* Add a little letter spacing for style */
+            text-transform: lowercase; /* Make the text uppercase for impact */
         }
+
+        .wisp-section img {
+            width: 200px;
+            height: auto;
+        }
+
         .square {
+            transition: transform 0.05s ease, background-color 0.5s ease;
+            border-radius: 10px;
+            z-index: 2;
+        }
+
+        .blue_square {
             position: fixed;
-            top: 50%;
-            left: 0;
-            width: 50vw; /* Half of the window width */
-            height: 50vh; /* Half of the window height */
-            background-color: blue;
-            transform: rotate(40deg);
-            transition: transform 0.5s ease;
-            transform-origin: center; /* Keep rotation centered */
-            z-index: -1; /* Put the square behind content */
+            top: 5%;
+            left: -20%;
+            width: 100vh;
+            height: 100vh;
+            background-color: #00AFFF;
+            transform: rotate(25deg);
+            border-radius: 75px;
+        }
+
+        .yellow_square {
+            position: absolute;
+            top: 15%;
+            left: 90%;
+            width: 25vh;
+            height: 25vh;
+            background-color: yellow;
+            transform: rotate(75deg);
+            border-radius: 25px;
+        }
+
+        .green_square {
+            position: absolute;
+            bottom: -10%;
+            right: -5%;
+            width: 50vh;
+            height: 50vh;
+            background-color: green;
+            transform: rotate(-45deg);
+            border-radius: 35px;
+        }
+
+        .content {
+            position: relative;
+            padding: 20px;
+            height: 800px;
+            text-align: center;
+            background-color: #fafafa;
+            z-index: 1;
+        }
+
+        .wisp-section {
+            position: relative;
+            height: 800px;
+            background-color: #fff;
+            text-align: center;
+            padding-top: 50px;
+            z-index: 1;
+        }
+
+        .big-image-section {
+            position: relative;
+            height: 400px;
+            padding-top: 20px;
+            background-color: lightgray;
+            text-align: center;
+            z-index: 1;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 14px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 12px;
+            z-index: 2;
+        }
+
+        footer a {
+            color: #00AFFF;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Add animation for blue square moving to center and scaling up */
+        @keyframes moveToCenterAndScale {
+            to {
+                top: 50%;
+                left: 50%;
+                width: 10000vh; /* Increase size */
+                height: 10000vh; /* Maintain square proportions */
+                background-color: #00AFFF;
+                transform: translate(-50%, -50%) rotate(0deg); /* Center and reset rotation */
+            }
+        }
+
+        .move-and-scale {
+            animation: moveToCenterAndScale 2s forwards ease-in-out;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Twiddl</h1>
+    <img src="/pictures/twiddl_plank.png" alt="Twiddl Logo">
+    <h1> Your data just a twist away </h1>
 </header>
 
-<div class="square" id="square"></div>
+<div class="wrapper">
+    <div class="square blue_square" id="blue-square"></div>
+    <div class="square yellow_square"></div>
+
+    <div class="content">
+        <h4>Twiddl info placeholder</h4>
+        <p>This is a placeholder for a Twiddl content section.</p>
+    </div>
+
+    <!-- Wisp Section -->
+    <div class="wisp-section" id="wisp">
+        <img src="/pictures/wisp_plank.png" alt="Wisp Logo">
+        <h1> One click between you and data </h1>
+        <div class="content">
+            <h4>Wisp info placeholder</h4>
+            <p>This is a placeholder for a Wisp content section.</p>
+        </div>
+        <!-- Green square inside the Wisp section -->
+        <div class="square green_square"></div>
+    </div>
+
+    <!-- Big Image Section (placeholder) -->
+    <div class="big-image-section" id="big-image">
+        <h4>Big Image Placeholder</h4>
+        <p>This is a placeholder for a large image or content section.</p>
+    </div>
+</div>
+
+<!-- Footer Section -->
+<footer>
+    <p>Contact us at: <a href="mailto:contact@twiddl.dev">contact@twiddl.dev</a></p>
+    <p>2024 Twiddl</p>
+</footer>
 
 <script>
+
+    let hasScaled = false;
+    
     window.addEventListener('scroll', function() {
-        let square = document.getElementById('square');
-        let rotation = window.scrollY * -0.1; // Rotate based on scroll position (counter-clockwise)
-        square.style.transform = `rotate(${40 + rotation}deg)`; // Start at 40 degrees and rotate with scroll
+        let squares = document.querySelectorAll('.square');
+        let rotation = window.scrollY * -0.1;
+
+        squares.forEach((square, index) => {
+            let initialRotation;
+            if (square.classList.contains('blue_square')) {
+                initialRotation = 25;
+            } else if (square.classList.contains('yellow_square')) {
+                initialRotation = 75;
+            } else {
+                initialRotation = -45;
+            }
+            square.style.transform = `rotate(${initialRotation + rotation}deg)`;
+        });
+
+        // Detect when the bottom of the Big Image section is reached
+        const bigImageSection = document.getElementById('big-image');
+        const bigImageSectionBottom = bigImageSection.getBoundingClientRect().bottom;
+        const windowHeight = window.innerHeight;
+
+        let blueSquare = document.getElementById('blue-square');
+
+        // Detect when the bottom of the Wisp section is reached
+        const wispSection = document.getElementById('wisp');
+        const wispSectionBottom = wispSection.getBoundingClientRect().bottom;
+        const wispSectionTop = wispSection.getBoundingClientRect().top;
+
+
+
+        // Change to red when entering Wisp, return to blue when leaving
+        if (wispSectionTop + 300 < windowHeight && wispSectionBottom > 0) {
+            blueSquare.style.backgroundColor = '#FF0036'; // Change the blue square to red when in Wisp section
+        } else {
+            blueSquare.style.backgroundColor = '#00AFFF'; // Revert to blue when out of Wisp section
+        }
+
+        // When the bottom of the Big Image section is reached, move and scale the blue square
+        if (bigImageSectionBottom < windowHeight && !hasScaled) {
+            blueSquare.classList.add('move-and-scale');
+            blueSquare.classList.remove('return-to-original');
+            hasScaled = true; // Mark that the blue square has scaled
+        }
+
+        // When scrolling back up and before the Big Image section, return blue square to original position
+        if (bigImageSectionBottom > windowHeight && hasScaled) {
+            blueSquare.classList.remove('move-and-scale');
+            blueSquare.classList.add('return-to-original');
+            hasScaled = false; // Reset the scaling state
+        }
     });
 </script>
 
