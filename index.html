@@ -12,27 +12,35 @@
             padding: 0;
         }
         header {
+            position: relative;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 20px;
             background-color: #f4f4f4;
         }
         h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: #333;
+            text-align: center;
         }
         .square {
-            width: 50px;
-            height: 50px;
+            position: fixed;
+            top: 50%;
+            left: 0;
+            width: 50vw; /* Half of the window width */
+            height: 50vh; /* Half of the window height */
             background-color: blue;
-            transform: rotate(40deg); /* Default rotation */
-            transition: transform 0.5s ease; /* Smooth transition */
+            transform: rotate(40deg);
+            transition: transform 0.5s ease;
+            transform-origin: center; /* Keep rotation centered */
+            z-index: -1; /* Put the square behind content */
         }
         .content {
-            height: 1500px; /* To enable scrolling */
             padding: 20px;
+            margin-top: 200px; /* Extra space for scroll */
+            height: 2000px; /* Content height to enable scroll */
             background-color: #fafafa;
         }
     </style>
@@ -41,20 +49,20 @@
 
 <header>
     <h1>Twiddl</h1>
-    <div class="square" id="square"></div>
 </header>
 
+<div class="square" id="square"></div>
+
 <div class="content">
-    <p>Scroll down to see the square rotate.</p>
+    <p>Scroll down to see the square rotate and follow the window.</p>
     <!-- Additional content goes here -->
 </div>
 
 <script>
-    // JavaScript to handle the rotation of the square on scroll
     window.addEventListener('scroll', function() {
         let square = document.getElementById('square');
         let rotation = window.scrollY * -0.1; // Rotate based on scroll position (counter-clockwise)
-        square.style.transform = `rotate(${40 + rotation}deg)`; // Initial 40 degrees plus counter scroll
+        square.style.transform = `rotate(${40 + rotation}deg)`; // Start at 40 degrees and rotate with scroll
     });
 </script>
 
