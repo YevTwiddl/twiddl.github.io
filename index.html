@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css2?family=Squada+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+
     <title>Twiddl</title>
     <style>
         
@@ -38,15 +40,16 @@
             position: relative;
             max-width: 100vw; /* Ensure wrapper never exceeds viewport width */
             overflow-x: hidden; /* Prevent horizontal scroll */
+            align-items: center;
         }
         h1 {
             font-family: 'Squada One', sans-serif; /* Use Squada One font */
             font-size: 2.5rem; /* Adjust the font size as needed */
             color: #333; /* Set the text color */
             text-align: center; /* Center the text */
-            margin: 20px 0; /* Add some spacing around the text */
+            margin: 3px 0; /* Add some spacing around the text */
             letter-spacing: 3px; /* Add a little letter spacing for style */
-            text-transform: lowercase; /* Make the text uppercase for impact */
+            text-transform: uppercase; /* Make the text uppercase for impact */
         }
 
         .wisp-section img {
@@ -63,7 +66,7 @@
         .blue_square {
             position: fixed;
             top: 5%;
-            left: -30%;
+            left: -20%;
             width: 50%; /* 50% of viewport width */
             aspect-ratio: 1 / 1;
             background-color: #00AFFF;
@@ -73,9 +76,9 @@
 
         .yellow_square {
             position: absolute;
-            top: 15%;
+            top: 2%;
             left: 90%;
-            width: 15%;
+            width: 10%;
             aspect-ratio: 1 / 1;
             background-color: yellow;
             transform: rotate(75deg);
@@ -85,8 +88,8 @@
 
         .green_square {
             position: absolute;
-            bottom: -5%;
-            right: -5%;
+            bottom: -8%;
+            right: -8%;
             width: 25%;
             aspect-ratio: 1 / 1;
             background-color: green;
@@ -97,12 +100,110 @@
 
         .content {
             position: relative;
-            padding: 20px;
-            height: 800px;
-            text-align: center;
+            padding: 3%;
+            height: auto;
+            width: 30%;
+            text-align: left;
             background-color: #fafafa;
             z-index: 1;
             overflow-x: hidden;
+            right: 0;
+            margin: 3%;
+            padding-right: 10%;
+            margin-left: auto;
+
+            font-size: 1rem;
+            font-family: 'Roboto', sans-serif;
+            letter-spacing: 1px; /* Reduced letter spacing for readability */
+        }
+
+        .content .text {
+            display: flex;
+            flex-direction: row;
+            text-align: left;
+        }
+
+        .content .image-container {
+            display: flex;
+            flex-direction: row;
+            text-align: left; /* Aligns the image to the right */
+            margin-top: 20px; /* Adds spacing between text and image */
+        }
+
+        .content img {
+            height: 150px;
+            width: auto;
+            border-radius: 50%;
+        }
+        .bullet-point-container {
+            position: fixed; /* Sticks the container to the viewport */
+            top: 50%; /* Center it vertically */
+            left: 1%; /* No movement from the left */
+            width: 30%; /* Occupy 20% of the screen width */
+            padding: 20px;
+            color: white;
+            border-radius: 10px;
+            transform: translateY(-50%);
+            opacity: 1; /* Initially visible */
+            z-index: 999;
+            transition: opacity 0.5s ease; /* Smooth opacity transition */
+        }
+
+        .bullet-point-container.hide {
+            opacity: 0; /* Make it disappear */
+        }
+
+        .bullet-point-container ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .bullet-point-container li {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            font-family: 'Roboto', sans-serif;
+            letter-spacing: 1px; /* Reduced letter spacing for readability */
+        }
+
+        #scrollToBottom {
+            background-color: white;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        #scrollToBottom:hover {
+            background-color: yellow;
+        }
+
+        /* Default: show the original button, hide the mobile button */
+        #scrollToBottomMobile {
+            display: none;
+            background-color: #00AFFF;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        #scrollToBottomMobile:hover {
+            background-color: yellow;
+        }
+
+        /* On screens smaller than 1000px, hide the original button and show the mobile button */
+        @media (max-width: 1000px) {
+            #scrollToBottom {
+                display: none;
+            }
+
+            #scrollToBottomMobile {
+                display: block;
+            }
         }
 
         .wisp-section {
@@ -210,6 +311,13 @@
             .blue_square {
                 left: -50%;
             }
+            .content {
+                margin: auto;
+                width: 75%;
+            }
+            .bullet-point-container {
+                visibility: hidden;
+            }
         }
     </style>
 </head>
@@ -224,9 +332,36 @@
         <div class="square yellow_square"></div>
     <div class="square blue_square" id="blue-square"></div>
 
-    <div class="content">
-        <h4>Twiddl info placeholder</h4>
-        <p>This is a placeholder for a Twiddl content section.</p>
+    <div class="bullet-point-container" id="bullet-container">
+        <ul>
+            <li><strong>Value:</strong> Every piece of data holds value</li>
+            <li><strong>Ease:</strong> Simple way to manage data</li>
+            <li><strong>Access:</strong> Designed for non-tech users</li>
+        </ul>
+        <br>
+        <button id="scrollToBottom">Join the journey</button>
+    </div>
+
+    <div class="content" id="twiddl-section">
+        <h3>Our vision:</h3>
+        <p>Every business generates data, yet too many miss the chance to turn it into real value — whether that’s boosting efficiency or saving money.</p>
+        <p>Until now, data analysis and management have been out of reach for most. But it’s time to change that. 
+            At Twiddl, we believe data should be simple, actionable, and accessible to everyone.</p>
+        <p>Our vision is to break down the barriers between people and their data, enabling businesses of any size to make smarter, data-driven decisions.
+            By simplifying complex data processes, we’re making the power of data available for those who need it most—without the need for expert knowledge.</p>
+        <p>Join the data-driven world with Twiddl — where smart decisions are just a click away.</p>
+        <h3>Status:</h3>
+        <p>Twiddl is in its pre-seed stage, focused on building out the foundation for our vision. 
+            As we continue to develop our platform, we're engaging with early users and gathering feedback to shape our product. 
+            We’re driven by a passion for simplifying data and are looking for partners to join us on this journey.</p>
+        <button id="scrollToBottomMobile">Join</button>
+        <br>
+        <h3>About founder:</h3>
+        <div class="image-container">
+            <p>Yevhen Sevastianov is a software and data engineer with experience in developing automated solutions for the AgTech, Logistics, and Manufacturing sectors. Driven by a vision for innovation, he focuses on delivering impactful data solutions to non-tech industries.</p>
+            <img src="/pictures/yevhen.jpg" alt="Yevhen Logo">   
+        </div>
+
     </div>
 
     <!-- Wisp Section -->
@@ -263,6 +398,19 @@
 
 <script>
     //let hasScaled = false;
+
+    // Functionality for both buttons
+    function scrollToBottom() {
+        window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+        });
+    }
+
+    // Attach the same event listener to both buttons
+    document.getElementById("scrollToBottom").addEventListener("click", scrollToBottom);
+    document.getElementById("scrollToBottomMobile").addEventListener("click", scrollToBottom);
+
     
     window.addEventListener('scroll', function() {
         let squares = document.querySelectorAll('.square');
@@ -280,6 +428,7 @@
             square.style.transform = `rotate(${initialRotation + rotation}deg)`;
         });
 
+
         // Detect when the bottom of the Big Image section is reached
         const bigImageSection = document.getElementById('big-image');
         const bigImageSectionBottom = bigImageSection.getBoundingClientRect().bottom;
@@ -289,6 +438,7 @@
         let emailContainer = document.getElementById('email-container');
 
         // Detect when the bottom of the Wisp section is reached
+        const bulletContainer = document.getElementById('bullet-container');
         const wispSection = document.getElementById('wisp');
         const wispSectionBottom = wispSection.getBoundingClientRect().bottom;
         const wispSectionTop = wispSection.getBoundingClientRect().top;
@@ -296,9 +446,12 @@
         // Change to red when entering Wisp, return to blue when leaving
         if (wispSectionTop + 300 < windowHeight && wispSectionBottom > 0) {
             blueSquare.style.backgroundColor = '#FF0036'; // Change the blue square to red when in Wisp section
+            bulletContainer.classList.add('hide');
         } else {
             blueSquare.style.backgroundColor = '#00AFFF'; // Revert to blue when out of Wisp section
+            bulletContainer.classList.remove('hide');
         }
+
 
         // When the bottom of the Big Image section is reached, move and scale the blue square
         if (bigImageSectionBottom < windowHeight) {
