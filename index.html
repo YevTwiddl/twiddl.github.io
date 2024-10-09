@@ -10,14 +10,6 @@
     <title>Twiddl</title>
     <style>
         
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: lightgray;
-            overflow-x: hidden;
-        }
-
         header {
             display: flex;
             flex-direction: column;
@@ -36,25 +28,29 @@
             padding-bottom: 30px;
         }
 
-        .wrapper {
-            position: relative;
-            max-width: 100vw; /* Ensure wrapper never exceeds viewport width */
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            align-items: center;
-        }
         h1 {
-            font-family: 'Squada One', sans-serif; /* Use Squada One font */
-            font-size: 2.5rem; /* Adjust the font size as needed */
-            color: #333; /* Set the text color */
-            text-align: center; /* Center the text */
-            margin: 3px 0; /* Add some spacing around the text */
-            letter-spacing: 3px; /* Add a little letter spacing for style */
-            text-transform: uppercase; /* Make the text uppercase for impact */
+            font-family: 'Squada One', sans-serif;
+            font-size: 2.5rem; 
+            color: black; 
+            text-align: center; 
+            margin: 3px 0; 
+            letter-spacing: 3px; 
+            text-transform: uppercase;
         }
 
-        .wisp-section img {
-            width: 200px;
-            height: auto;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: lightgray;
+            overflow-x: hidden;
+        }
+
+        .wrapper {
+            position: relative;
+            max-width: 100vw;
+            overflow-x: hidden; 
+            align-items: center;
         }
 
         .square {
@@ -65,42 +61,61 @@
 
         .blue_square {
             position: fixed;
-            top: 5%;
-            left: -20%;
-            width: 50%; /* 50% of viewport width */
+            top: 10vh;
+            left: -15vw; 
+            width: 40vw;
             aspect-ratio: 1 / 1;
             background-color: #00AFFF;
             transform: rotate(25deg);
+            transform-origin: center;
             border-radius: 10%;
         }
 
         .yellow_square {
             position: absolute;
-            top: 2%;
-            left: 90%;
-            width: 10%;
+            top: 5vh; 
+            left: 85vw; 
+            width: 12vw;
             aspect-ratio: 1 / 1;
-            background-color: yellow;
+            background-color: #ffe600;
             transform: rotate(75deg);
+            transform-origin: center;
             border-radius: 10%;
             overflow: hidden;
         }
 
         .green_square {
             position: absolute;
-            bottom: -8%;
-            right: -8%;
-            width: 25%;
+            bottom: -5vh; 
+            right: -5vw;
+            width: 20vw;
             aspect-ratio: 1 / 1;
             background-color: green;
             transform: rotate(-45deg);
+            transform-origin: center;
             border-radius: 10%;
             overflow: hidden;
         }
 
+        .twiddl-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2200px;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .twiddl-bg-image {
+            width: 100%;
+            height: 1100px;
+            object-fit: cover;
+        }
+
         .content {
             position: relative;
-            padding: 3%;
+            padding: 5%;
             height: auto;
             width: 30%;
             text-align: left;
@@ -109,12 +124,11 @@
             overflow-x: hidden;
             right: 0;
             margin: 3%;
-            padding-right: 10%;
+            margin-right: 10%;
             margin-left: auto;
-
             font-size: 1rem;
             font-family: 'Roboto', sans-serif;
-            letter-spacing: 1px; /* Reduced letter spacing for readability */
+            letter-spacing: 1px; 
         }
 
         .content .text {
@@ -126,34 +140,37 @@
         .content .image-container {
             display: flex;
             flex-direction: row;
-            text-align: left; /* Aligns the image to the right */
-            margin-top: 20px; /* Adds spacing between text and image */
+            text-align: left; 
+            margin-top: 20px; 
         }
 
         .content img {
+            position: relative;
             height: 150px;
             width: auto;
             border-radius: 50%;
+            margin-top: 15px;
+            margin-right: 20px;
         }
+
         .bullet-point-container {
-            position: fixed; /* Sticks the container to the viewport */
-            top: 50%; /* Center it vertically */
-            left: 1%; /* No movement from the left */
-            width: 30%; /* Occupy 20% of the screen width */
+            position: fixed; 
+            top: 10vh; 
+            left: -15vw; 
+            width: 20vw;
             padding: 20px;
-            color: white;
+            padding-top: 40%;
+            padding-left: 20%;
+            color: white; 
             border-radius: 10px;
             transform: translateY(-50%);
-            opacity: 1; /* Initially visible */
-            z-index: 999;
-            pointer-events: auto;
-            transition: opacity 0.5s ease; /* Smooth opacity transition */
+            z-index: 999; 
+            opacity: 1;
+            transition: opacity 0.5s ease; 
         }
 
         .bullet-point-container.hide {
-            opacity: 0; /* Make it disappear */
-            z-index: 0;
-            pointer-events: none;
+            opacity: 0; 
         }
 
         .bullet-point-container ul {
@@ -165,7 +182,7 @@
             margin-bottom: 10px;
             font-size: 1.5rem;
             font-family: 'Roboto', sans-serif;
-            letter-spacing: 1px; /* Reduced letter spacing for readability */
+            letter-spacing: 1px; 
         }
 
         #scrollToBottom {
@@ -176,14 +193,12 @@
             cursor: pointer;
             font-size: 1rem;
             transition: background-color 0.3s ease;
-            pointer-events: auto;
         }
 
         #scrollToBottom:hover {
             background-color: yellow;
         }
 
-        /* Default: show the original button, hide the mobile button */
         #scrollToBottomMobile {
             display: none;
             background-color: #00AFFF;
@@ -193,25 +208,10 @@
             cursor: pointer;
             font-size: 1rem;
             transition: background-color 0.3s ease;
-            pointer-events: none;
         }
 
         #scrollToBottomMobile:hover {
             background-color: yellow;
-        }
-
-        /* On screens smaller than 1000px, hide the original button and show the mobile button */
-        @media (max-width: 1000px) {
-            #scrollToBottom {
-                display: none;
-                z-index: 1;
-                pointer-events: none;
-            }
-
-            #scrollToBottomMobile {
-                display: block;
-                pointer-events: auto;
-            }
         }
 
         .wisp-section {
@@ -224,13 +224,23 @@
             overflow: hidden;
         }
 
+        .wisp-section img {
+            position: relative;
+            width: 200px;
+            height: auto;
+        }
+
         .big-image-section {
             position: relative;
-            height: 400px;
-            padding-top: 20px;
+            height: auto;
             background-color: lightgray;
             text-align: center;
             z-index: 1;
+            overflow: hidden;
+        }
+        .big-image-section img {
+            width: 100%;
+            height: auto;
         }
 
         footer {
@@ -254,23 +264,22 @@
             text-decoration: underline;
         }
 
-        /* Add animation for blue square moving to center and scaling up */
         @keyframes moveToCenterAndScale {
             to {
                 top: 50%;
                 left: 50%;
-                width: 10000vh; /* Increase size */
-                height: 10000vh; /* Maintain square proportions */
+                width: 1000vh; 
+                aspect-ratio: 1/1; 
                 background-color: #00AFFF;
-                transform: translate(-50%, -50%) rotate(0deg); /* Center and reset rotation */
+                transform: translate(-50%, -50%); 
+                opacity: 0.7;
             }
         }
 
         .move-and-scale {
-            animation: moveToCenterAndScale 2s forwards ease-in-out;
+            animation: moveToCenterAndScale 1.5s forwards ease-in-out;
         }
 
-        /* Email input container styles */
         .email-container {
             position: fixed;
             top: 50%;
@@ -280,19 +289,15 @@
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            z-index: 0;
-            opacity: 0; /* Initially hidden */
-            pointer-events: none;
-            transition: opacity 0.2s ease; /* Smooth transition for opacity */
+            z-index: 999;
+            opacity: 0; 
+            transition: opacity 0.2s ease; 
         }
 
         .email-container.show {
-            z-index: 999;
-            opacity: 1; /* Make it visible when the class is added */
-            pointer-events: auto;
+            opacity: 1; 
             transition: opacity 0.5s ease 1s;
         }
-
 
         .email-container input[type="email"] {
             padding: 10px;
@@ -317,10 +322,15 @@
         .email-container button:hover {
             background-color: #007bbd;
         }
+        @media (max-width: 1200px) {
+            .bullet-point-container li {
+                font-size: 1.2rem;
+            }
+        }
 
-        @media (max-width: 1000px) {
+        @media (max-width: 900px) {
             .blue_square {
-                left: -50%;
+                left: -40%;
             }
             .content {
                 margin: auto;
@@ -329,18 +339,42 @@
             .bullet-point-container {
                 visibility: hidden;
             }
+            #scrollToBottom {
+                display: none;
+            }
+
+            #scrollToBottomMobile {
+                display: block;
+            }
+            .content .image-container {
+                display: block;
+            }
+            @keyframes moveToCenterAndScale {
+                to {
+                    top: 50%;
+                    left: 50%;
+                    width: 1000vh; 
+                    aspect-ratio: 1/1; 
+                    background-color: #00AFFF;
+                    transform: translate(-50%, -50%); 
+                    opacity: 1;
+                }
+            }
         }
+        
     </style>
 </head>
 <body>
-
 <header>
     <img src="/pictures/twiddl_plank.png" alt="Twiddl Logo">
     <h1> twist your data </h1>
 </header>
 
 <div class="wrapper">
-        <div class="square yellow_square"></div>
+
+    <!-- Twiddl Section -->
+
+    <div class="square yellow_square"></div>
     <div class="square blue_square" id="blue-square"></div>
 
     <div class="bullet-point-container" id="bullet-container">
@@ -351,6 +385,11 @@
         </ul>
         <br>
         <button id="scrollToBottom">Join the journey</button>
+    </div>
+
+    <div class="twiddl-bg">
+        <img src="/pictures/twiddl-bg.jpg" alt="Twiddl BG" class="twiddl-bg-image">
+        <img src="/pictures/twiddl-bg.jpg" alt="Twiddl BG" class="twiddl-bg-image" style="margin-top: -5px;">
     </div>
 
     <div class="content" id="twiddl-section">
@@ -369,29 +408,31 @@
         <br>
         <h3>About founder:</h3>
         <div class="image-container">
-            <p>Yevhen Sevastianov is a software and data engineer with experience in developing automated solutions for the AgTech, Logistics, and Manufacturing sectors. Driven by a vision for innovation, he focuses on delivering impactful data solutions to non-tech industries.</p>
-            <img src="/pictures/yevhen.jpg" alt="Yevhen Logo">   
+            <img src="/pictures/yevhen.jpg" alt="Yevhen Logo"> 
+            <p>Yevhen Sevastianov is a software and data engineer with experience in developing automated solutions for the AgTech, Logistics, and Manufacturing sectors. Driven by a vision for innovation, he focuses on delivering impactful data solutions to non-tech industries.</p>  
         </div>
 
     </div>
 
     <!-- Wisp Section -->
     <div class="wisp-section" id="wisp">
+
         <img src="/pictures/wisp_plank.png" alt="Wisp Logo">
         <h1> one click for big insights </h1>
+
         <div class="content">
             <h4>Wisp info placeholder</h4>
             <p>This is a placeholder for a Wisp content section.</p>
         </div>
-        <!-- Green square inside the Wisp section -->
+
         <div class="square green_square"></div>
     </div>
 
-    <!-- Big Image Section (placeholder) -->
+    <!-- Big Image Section -->
     <div class="big-image-section" id="big-image">
-        <h4>Big Image Placeholder</h4>
-        <p>This is a placeholder for a large image or content section.</p>
+        <img src="/pictures/mail-transition.jpg" alt="mail-transition BG" class="mail-tranisition">
     </div>
+
 </div>
 
 <!-- Email Input Section -->
@@ -407,8 +448,8 @@
     <p>2024 Twiddl</p>
 </footer>
 
+
 <script>
-    //let hasScaled = false;
 
     // Functionality for both buttons
     function scrollToBottom() {
@@ -439,10 +480,10 @@
             square.style.transform = `rotate(${initialRotation + rotation}deg)`;
         });
 
-
         // Detect when the bottom of the Big Image section is reached
         const bigImageSection = document.getElementById('big-image');
         const bigImageSectionBottom = bigImageSection.getBoundingClientRect().bottom;
+        const bigImageSectionTop = bigImageSection.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
 
         let blueSquare = document.getElementById('blue-square');
@@ -455,7 +496,7 @@
         const wispSectionTop = wispSection.getBoundingClientRect().top;
 
         // Change to red when entering Wisp, return to blue when leaving
-        if (wispSectionTop + 300 < windowHeight && wispSectionBottom > 0) {
+        if ((wispSectionTop + 300 < windowHeight && wispSectionBottom > 0) || (bigImageSectionTop <windowHeight && bigImageSectionBottom > 0)) {
             blueSquare.style.backgroundColor = '#FF0036'; // Change the blue square to red when in Wisp section
             bulletContainer.classList.add('hide');
         } else {
@@ -463,24 +504,20 @@
             bulletContainer.classList.remove('hide');
         }
 
-
         // When the bottom of the Big Image section is reached, move and scale the blue square
         if (bigImageSectionBottom < windowHeight) {
             blueSquare.classList.add('move-and-scale');
             blueSquare.classList.remove('return-to-original');
-
-            emailContainer.classList.add('show'); // Smoothly show the email input
-// 1000ms = 1 second
-            //hasScaled = true; // Mark that the blue square has scaled
+            emailContainer.classList.add('show');
         }
 
         // When scrolling back up and before the Big Image section, return blue square to original position
         if (bigImageSectionBottom > windowHeight) {
             blueSquare.classList.remove('move-and-scale');
             blueSquare.classList.add('return-to-original');
-            emailContainer.classList.remove('show'); // Smoothly hide the email input
-            //hasScaled = false; // Reset the scaling state
+            emailContainer.classList.remove('show');
         }
     });
+    
 </script>
 
