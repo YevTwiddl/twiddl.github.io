@@ -531,10 +531,33 @@
         // Change to red when entering Wisp, return to blue when leaving
         if ((wispSectionTop + 300 < windowHeight && wispSectionBottom > 0) || (bigImageSectionTop <windowHeight && bigImageSectionBottom > 0)) {
             blueSquare.style.backgroundColor = '#FF0036'; // Change the blue square to red when in Wisp section
-            bulletContainer.classList.add('hide');
+            //bulletContainer.classList.add('hide');
+                    // Change the bullet-point text
+            bulletContainer.innerHTML = `
+                <ul>
+                    <li><strong>Impact:</strong> Drive results with smart data</li>
+                    <li><strong>Simplicity:</strong> Streamline your data workflow</li>
+                    <li><strong>Control:</strong> Keep your data, control your future</li>
+                </ul>
+                <br>
+                <button id="scrollToBottom" style="margin-left: 3vw;">Join the journey</button>
+            `;
+
+        // Reattach the scroll event to the new button
+        document.getElementById("scrollToBottom").addEventListener("click", scrollToBottom);
         } else {
             blueSquare.style.backgroundColor = '#00AFFF'; // Revert to blue when out of Wisp section
-            bulletContainer.classList.remove('hide');
+            //bulletContainer.classList.remove('hide');
+                    // Revert the bullet-point text
+        bulletContainer.innerHTML = `
+            <ul>
+                <li><strong>Value:</strong> Every piece of data holds value</li>
+                <li><strong>Ease:</strong> Simple way to manage data</li>
+                <li><strong>Access:</strong> Designed for non-tech users</li>
+            </ul>
+            <br>
+            <button id="scrollToBottom" style="margin-left: 3vw;">Join the journey</button>
+        `;
         }
 
         // When the bottom of the Big Image section is reached, move and scale the blue square
@@ -542,6 +565,7 @@
             blueSquare.classList.add('move-and-scale');
             blueSquare.classList.remove('return-to-original');
             emailContainer.classList.add('show');
+            bulletContainer.classList.add('hide');
         }
 
         // When scrolling back up and before the Big Image section, return blue square to original position
@@ -549,6 +573,7 @@
             blueSquare.classList.remove('move-and-scale');
             blueSquare.classList.add('return-to-original');
             emailContainer.classList.remove('show');
+            bulletContainer.classList.remove('hide');
         }
     });
     
