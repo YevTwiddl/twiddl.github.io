@@ -170,7 +170,7 @@
             padding: 20px;
             padding-top: 40%;
             padding-left: 20%;
-            color: white; 
+            color: #fff; 
             border-radius: 10px;
             transform: translateY(-50%);
             z-index: 999; 
@@ -191,13 +191,13 @@
 
         .bullet-point-container li {
             margin-bottom: 10px;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-family: 'Roboto', sans-serif;
             letter-spacing: 1px; 
         }
 
         #scrollToBottom {
-            background-color: white;
+            background-color: #fff;
             color: black;
             padding: 10px 20px;
             border-radius: .25rem;
@@ -227,18 +227,82 @@
             background-color: #ffe600;
             transition: all 0.4s ease;
         }
+        .wisp-header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding-top: 50px;
+            background-color: #fff;
+            overflow-x: hidden;
+            z-index: 2;
+        }
+
+        .wisp-header img {
+            width: 10vw;
+            height: auto;
+            padding-bottom: 10px;
+        }
 
         .wisp-section {
             position: relative;
             height: auto;
-            background-color: #fff;
+            background: linear-gradient(to bottom, #fff 10%, rgb(240, 240, 240) 100%);
+            
+
+
             text-align: center;
-            padding-top: 50px;
             z-index: 1;
             overflow: hidden;
         }
+        .shape {
+            position: absolute;
+            background-color: #fff; /* Semi-transparent #00AFFF;*/
+            clip-path: polygon(50% 0%, 10% 100%, 100% 100%);
+            transform: rotate(calc(20deg * var(--angle)));
+            width: 3px;
+            height: 2000px;
+        }
+
+        .shape:nth-child(1) {
+            top: 0%;
+            left: 20%;
+            --angle: 1.5;
+            background-color: red;
+        }
+
+        .shape:nth-child(2) {
+            top: 0%;
+            left: 50%;
+            --angle: 3;
+            background-color: #00AFFF;
+        }
+
+        .shape:nth-child(3) {
+            top: 0%;
+            left: 50%;
+            --angle: -2;
+            background-color: green;
+        }
+
+        .shape:nth-child(4) {
+            top: 0%;
+            left: 70%;
+            --angle: -0.5;
+            background-color: #ffe600;
+        }
+
+        .shape:nth-child(5) {
+            top: 0%;
+            left: 80%;
+            --angle: 1;
+            background-color: orange;
+        }
         .wisp-section .content {
             width: 40%;
+            background-color: #fff;
+            margin-top: 0;
         }
 
         .wisp-section img {
@@ -251,7 +315,7 @@
         .big-image-section {
             position: relative;
             height: auto;
-            background-color: lightgray;
+            background-color: #00AFFF;
             text-align: center;
             z-index: 1;
             overflow: hidden;
@@ -262,6 +326,7 @@
             max-height: 90vh;
             object-fit: cover;
             margin-bottom: -5px;
+            opacity: 1;
         }
 
         footer {
@@ -277,7 +342,7 @@
         }
 
         footer a {
-            color: #00AFFF;
+            color: skyblue;
             text-decoration: none;
         }
 
@@ -293,7 +358,7 @@
                 aspect-ratio: 1/1; 
                 background-color: #00AFFF;
                 transform: translate(-50%, -50%); 
-                opacity: 0.7;
+                opacity: 0.8;
             }
         }
 
@@ -334,7 +399,7 @@
             border: none;
             border-radius: 8px;
             background: rgba(255, 255, 255, 0.7); /* Transparent white */
-            color: white;
+            color: #fff;
             backdrop-filter: blur(2px); /* Light blur for modern glassy look */
             outline: none;
             transition: all 0.3s ease;
@@ -350,7 +415,7 @@
             color: black;
             border-radius: .25rem;
             border: none;
-            background-color: white;
+            background-color: #fff;
             cursor: pointer;
             font-size: 16px;
             transition: all 0.4s ease;
@@ -370,7 +435,7 @@
                 font-size: 1.5rem; 
             }
             .bullet-point-container li {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
             .email-container {
                 width: 30vw;
@@ -386,14 +451,14 @@
             }
             .content {
                 margin: auto;
-                width: 75%;
+                width: 70%;
             }
             .wisp-section img {
                 width: 30vw;
             }
             .wisp-section .content {
                 margin: auto;
-                width: 75%;
+                width: 70%;
             }
             .bullet-point-container {
                 visibility: hidden;
@@ -479,9 +544,15 @@
 
     <!-- Wisp Section -->
     <div class="wisp-section" id="wisp">
-
-        <img src="/pictures/wisp_plank.png" alt="Wisp Logo">
-        <h1> one click for big insights </h1>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="wisp-header" id="wisp header">
+            <img src="/pictures/wisp_plank.png" alt="Wisp Logo">
+            <h1> one click for big insights </h1>
+        </div>
 
         <div class="content">
             <h3>About product:</h3>
@@ -500,7 +571,7 @@
 
     <!-- Big Image Section -->
     <div class="big-image-section" id="big-image">
-        <img src="/pictures/mail-transition.jpg" alt="mail-transition BG" class="mail-tranisition">
+        <img src="/pictures/twiddl-bg.jpg" alt="mail-transition BG" class="mail-tranisition">
     </div>
 
 </div>
@@ -515,8 +586,7 @@
 
 <!-- Footer Section -->
 <footer>
-    <p>Contact us at: <a href="mailto:contact@twiddl.dev">contact@twiddl.dev</a></p>
-    <p>2024 Twiddl</p>
+    <p>Have a question? <a href="mailto:contact@twiddl.dev">contact@twiddl.dev</a></p>
 </footer>
 
 
