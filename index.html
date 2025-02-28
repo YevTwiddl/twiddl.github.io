@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twiddl - Data Without Moving It</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    
+    <header>
+        <div class="logo">TWIDDL</div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#value">Value</a></li>
+                <li><a href="#how">How</a></li>
+                <li><a href="#waitlist" class="nav-cta">Join Waitlist</a></li>
+                <li><a href="#" id="nav-demo-button">• Demo</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">☰</div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="grid-pattern"></div>
+        <div class="hero-content">
+            <h1>Files aren't databases<br>But now they <span class="highlight">act like one</span></h1>
+            <p>Connect and query your distributed files in one place</p>
+            <div class="hero-buttons">
+                <a href="#about" class="cta-button cta-learn">Learn More</a>
+                <a href="#waitlist" class="cta-button cta-join">Join</a>
+            </div>
+        </div>
+        <div class="tech-cube">
+            <div class="cube-face front"></div>
+            <div class="cube-face back"></div>
+            <div class="cube-face top"></div>
+            <div class="cube-face bottom"></div>
+            <div class="cube-face left"></div>
+            <div class="cube-face right"></div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="section-header">
+            <h2>01 <span class="line"></span> ABOUT</h2>
+        </div>
+        <div class="about-content">
+            <p class="large-text">Connect raw, <span class="highlight">distributed data</span> sources with no migration and pipelines</p>
+            <div class="about-grid">
+                <div class="about-item">
+                    <h3>Access Anywhere</h3>
+                    <p>Install nodes on any machine and instantly make it part of your global data lake.</p>
+                </div>
+                <div class="about-item">
+                    <h3>Format Agnostic</h3>
+                    <p>Excel, CSV, JSON — it doesn't matter. If it has structure, it will be queried.</p>
+                </div>
+                <div class="about-item">
+                    <h3>Zero Migration</h3>
+                    <p>Keep your files exactly where they are — Twiddl brings the query to you.</p>
+                </div>
+                <div class="about-item">
+                    <h3>Sync in Click</h3>
+                    <p>Integrate every data source in one click, uniting your teams and devices in a single network.</p>
+                </div>
+            </div>
+        </div>
+        <div class="quote-box">
+            <p>It is <span class="highlight">easier than</span> explaining to your manager what <span class="highlight">ETL</span> means.</p>
+        </div>
+    </section>
+
+    <section id="value" class="value">
+        <div class="section-header">
+            <h2>02 <span class="line"></span> VALUE</h2>
+        </div>
+        <div class="value-content">
+            <p class="large-text">Break free from rigid formats. Twiddl links <span class="highlight">any file, from any corner</span> of your network</p>
+            
+            <div class="nodes-container">
+                <div class="demo-node node1">
+                    <div class="node-header">SERVER 1 - TOKYO</div>
+                    <div class="file-list">
+                        <div class="file">metrics.parquet</div>
+                        <div class="file">customers.json</div>
+                    </div>
+                </div>
+                <div class="demo-node node2">
+                    <div class="node-header">LAPTOP - CHICAGO</div>
+                    <div class="file-list">
+                        <div class="file">sales_2023.csv</div>
+                        <div class="file">leads_q4.xlsx</div>
+                    </div>
+                </div>
+                <div class="demo-node node3">
+                    <div class="node-header">IoT DEVICE - BERLIN</div>
+                    <div class="file-list">
+                        <div class="file">sensors_data.xml</div>
+                        <div class="file">device_health.avro</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dnd-demo">
+                <p>Drag, drop, query. That's it.</p>
+                <div class="drag-example">
+                    <div class="drag-source file1">
+                        <div class="file-label">sales_2023.csv (Chicago)</div>
+                        <p>customer_id <span class="join-key-badge">JOIN</span></p>
+                        <p>purchase_date</p>
+                        <p class="draggable">total_amount</p>
+                        <p class="draggable">region</p>
+                    </div>
+                    <div class="drag-arrow">→</div>
+                    
+                        <div class="result-container">
+                            <div class="twiddl-server">
+                                <div class="server-header">TWIDDL</div>
+                                <div class="result-data">
+                                    <div class="result-header">Unified Query Results</div>
+                                    <div class="result-row">
+                                        <span>Tanaka Corp</span>
+                                        <span>$123,456</span>
+                                        <span>Tokyo</span>
+                                    </div>
+                                    <div class="result-row">
+                                        <span>Suzuki Ltd</span>
+                                        <span>$89,012</span>
+                                        <span>Tokyo</span>
+                                    </div>
+                                    <div class="result-row">
+                                        <span>Smith Partners</span>
+                                        <span>$78,500</span>
+                                        <span>Chicago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <div class="drag-arrow">←</div>
+                    <div class="drag-source file2">
+                        <div class="file-label">customers.json (Tokyo)</div>
+                        <p>customer_id <span class="join-key-badge">JOIN</span></p>
+                        <p class="draggable">customer_name</p>
+                        <p>email</p>
+                        <p>company</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="try-interactive-demo">
+                <button id="open-demo-modal" class="demo-button">Try Interactive Demo</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="how" class="how">
+        <div class="section-header">
+            <h2>03 <span class="line"></span> HOW IT WORKS</h2>
+        </div>
+        <div class="how-content">
+            <p class="large-text">Once your data's stored, it's queryable. <span class="highlight">No extra steps</span> — just instant insight</p>
+            
+            <div class="how-steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <h3>Install Nodes</h3>
+                    <p>• One-click installation. <br>• Each machine adds to your global network. <br>• Node monitors your local files in place. <br>• Fits even for IoT devices.</p>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <h3>Select Data</h3>
+                    <p>• Browse available files across all nodes. <br>• Combine any files to create your query. <br>• Use SQL or friendly interface. <br>• No knowledge required.</p>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <h3>Get Results</h3>
+                    <p>• As soon as file added to node, instatly query it from anywhere. <br>• Close to real time data ready for analysis. <br>• Twiddl is your first step to automated data pipelines.</p>
+                </div>
+            </div>
+            
+            <div class="tech-details">
+                <h3><span class="highlight">></span> Technical Notes</h3>
+                <ul>
+                    <li>Nodes run on your machines as Docker containers with minimal footprint.</li>
+                    <li>Specified folders are monitored for any changes in files structure.</li>
+                    <li>You can join and query any files across all nodes using Twiddl web interface.</li>
+                    <li>SQL or Drag and Drop interface — friendly for any level of expertise.</li>
+                    <li>Each node processes its own batch of data locally and transmits only the results.</li>
+                    <li>Twiddl server aggregates results from nodes and presents them in one place.</li>
+                    <li>Supported formats: XLSX, CSV, JSON, Parquet, XML, AVRO and more.</li>
+                    <li>The node is lightweight enough to run on IoT devices for live monitoring.</li>
+                    <li>Deploy Twiddl server on your local network, or use our web service.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="waitlist" class="waitlist">
+        <div class="section-header">
+            <h2>04 <span class="line"></span> JOIN WAITLIST</h2>
+        </div>
+        <div class="waitlist-content">
+            <p class="large-text">Don't forget why you're here. <span class="highlight">Join the waitlist</span></p>
+            
+            <div class="waitlist-sphere">
+                <div class="sphere-ring horizontal"></div>
+                <div class="sphere-ring vertical"></div>
+                <div class="sphere-ring diagonal1"></div>
+                <div class="sphere-ring diagonal2"></div>
+            </div>
+            
+            <form class="waitlist-form">
+                <input type="email" placeholder="your@email.com" required>
+                <button type="submit">Get Early Access</button>
+            </form>
+            
+            <div class="disclaimer">
+                <p>We're currently in the Proof of Concept stage and seeking our first partners. Contact us to get early access and start experiencing the value of Twiddl as soon as possible.</p>
+                <p class="contact-email"><a href="mailto:contact@twiddl.dev">contact@twiddl.dev</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">TWIDDL</div>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#value">Value</a>
+                <a href="#how">How</a>
+                <a href="#waitlist">Join</a>
+                <a href="#" id="footer-demo-button">• Demo</a>
+            </div>
+            <div class="footer-note">
+                <p>Distributed Data, Unified Insights. Twiddl © 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+        
+        // Direct modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('demo-modal');
+            const openModalBtn = document.getElementById('open-demo-modal');
+            const closeModalBtn = document.querySelector('.close-modal');
+            
+            // Open modal
+            if (openModalBtn) {
+                openModalBtn.addEventListener('click', function() {
+                    modal.style.display = 'block';
+                    document.body.classList.add('modal-open');
+                });
+            }
+            
+            // Close modal
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                    document.body.classList.remove('modal-open');
+                });
+            }
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.classList.remove('modal-open');
+                }
+            });
+        });
+    </script>
+    
+    <!-- Add reference to script.js for interactive demo functionality -->
+    <script src="script.js"></script>
+    
+    <!-- Add the interactive demo modal at the end of the body -->
+    <div id="demo-modal" class="demo-modal">
+        <div class="modal-content">
+                <span class="close-modal">&times;</span>
+            
+            <div class="modal-body">
+                <p class="large-text">Try it yourself: <span class="highlight">Build a query across files</span></p>
+                
+                <div class="demo-workspace">
+                    <div class="available-files">
+                        <div class="file-panel" id="sales-file">
+                            <div class="file-header">sales_2023.csv (Chicago)</div>
+                            <div class="file-columns">
+                                <div class="column-item" data-column="customer_id">customer_id</div>
+                                <div class="column-item" data-column="purchase_date">purchase_date</div>
+                                <div class="column-item" data-column="total_amount">total_amount</div>
+                                <div class="column-item" data-column="product_id">product_id</div>
+                                <div class="column-item" data-column="region">region</div>
+                            </div>
+                        </div>
+                        
+                        <div class="file-panel" id="customers-file">
+                            <div class="file-header">customers.json (Tokyo)</div>
+                            <div class="file-columns">
+                                <div class="column-item" data-column="customer_id">customer_id</div>
+                                <div class="column-item" data-column="customer_name">customer_name</div>
+                                <div class="column-item" data-column="email">email</div>
+                                <div class="column-item" data-column="signup_date">signup_date</div>
+                                <div class="column-item" data-column="company">company</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="query-builder">
+                        <div class="selected-columns">
+                            <h4>Selected Columns:</h4>
+                            <div id="columns-container" class="columns-container">
+                                <div class="placeholder">Click columns from the files to select them</div>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-builder">
+                            <h4>Filters:</h4>
+                            <div class="filter-row">
+                                <select id="filter-column" class="filter-select">
+                                    <option value="">Select column</option>
+                                    <!-- Options will be populated dynamically -->
+                                </select>
+                                <select id="filter-operator" class="filter-operator">
+                                    <option value="=">=</option>
+                                    <option value=">">></option>
+                                    <option value="<"><</option>
+                                    <option value="LIKE">LIKE</option>
+                                </select>
+                                <input type="text" id="filter-value" class="filter-value" placeholder="Value">
+                                <button id="add-filter" class="filter-add">Apply</button>
+                            </div>
+                            <div id="active-filters" class="active-filters">
+                                <!-- Active filters will appear here -->
+                            </div>
+                        </div>
+                        
+                        <button id="run-query" class="run-query-btn">Run Query</button>
+                    </div>
+                    
+                    <div class="query-results">
+                        <h4>Results:</h4>
+                        <div id="results-table" class="results-table">
+                            <div class="results-placeholder">Your query results will appear here</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Email.js library before the closing body tag -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- Add email handler script -->
+    <script src="email-handler.js"></script>
+</body>
+</html>

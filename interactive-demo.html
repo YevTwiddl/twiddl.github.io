@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twiddl - Interactive Demo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    
+    <header>
+        <div class="logo"><a href="index.html">TWIDDL</a></div>
+        <nav>
+            <ul>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#value">Value</a></li>
+                <li><a href="index.html#how">How</a></li>
+                <li><a href="index.html#waitlist" class="nav-cta">Join Waitlist</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">☰</div>
+    </header>
+
+    <section class="interactive-demo-page">
+        <div class="container">
+            <div class="section-header">
+                <h2><span class="line"></span> INTERACTIVE DEMO</h2>
+            </div>
+            
+            <p class="large-text">Try it yourself: <span class="highlight">Build a query across files</span></p>
+            
+            <div class="demo-workspace">
+                <div class="available-files">
+                    <div class="file-panel" id="sales-file">
+                        <div class="file-header">sales_2023.csv (Chicago)</div>
+                        <div class="file-columns">
+                            <div class="column-item" data-column="customer_id">customer_id</div>
+                            <div class="column-item" data-column="purchase_date">purchase_date</div>
+                            <div class="column-item" data-column="total_amount">total_amount</div>
+                            <div class="column-item" data-column="product_id">product_id</div>
+                            <div class="column-item" data-column="region">region</div>
+                        </div>
+                    </div>
+                    
+                    <div class="file-panel" id="customers-file">
+                        <div class="file-header">customers.json (Tokyo)</div>
+                        <div class="file-columns">
+                            <div class="column-item" data-column="customer_id">customer_id</div>
+                            <div class="column-item" data-column="customer_name">customer_name</div>
+                            <div class="column-item" data-column="email">email</div>
+                            <div class="column-item" data-column="signup_date">signup_date</div>
+                            <div class="column-item" data-column="company">company</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="query-builder">
+                    <div class="selected-columns">
+                        <h4>Selected Columns:</h4>
+                        <div id="columns-container" class="columns-container">
+                            <div class="placeholder">Click columns from the files to select them</div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-builder">
+                        <h4>Filters:</h4>
+                        <div class="filter-row">
+                            <select id="filter-column" class="filter-select">
+                                <option value="">Select column</option>
+                                <!-- Options will be populated dynamically -->
+                            </select>
+                            <select id="filter-operator" class="filter-operator">
+                                <option value="=">=</option>
+                                <option value=">">></option>
+                                <option value="<"><</option>
+                                <option value="LIKE">LIKE</option>
+                            </select>
+                            <input type="text" id="filter-value" class="filter-value" placeholder="Value">
+                            <button id="add-filter" class="filter-add">Apply</button>
+                        </div>
+                        <div id="active-filters" class="active-filters">
+                            <!-- Active filters will appear here -->
+                        </div>
+                    </div>
+                    
+                    <button id="run-query" class="run-query-btn">Run Query</button>
+                </div>
+                
+                <div class="query-results">
+                    <h4>Results:</h4>
+                    <div id="results-table" class="results-table">
+                        <div class="results-placeholder">Your query results will appear here</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="back-to-main">
+                <a href="index.html" class="back-button">← Back to Main Page</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">TWIDDL</div>
+            <div class="footer-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#value">Value</a>
+                <a href="index.html#how">How It Works</a>
+                <a href="index.html#waitlist">Join Waitlist</a>
+            </div>
+            <div class="footer-note">
+                <p>© 2023 Twiddl. Liberating data one node at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+    </script>
+    
+    <!-- Add reference to script.js for interactive demo functionality -->
+    <script src="script.js"></script>
+</body>
+</html> 
